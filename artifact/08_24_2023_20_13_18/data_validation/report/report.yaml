@@ -1,0 +1,78 @@
+test_missing_value: []
+train_missing_value: []
+train_test_drift:
+  AGE:
+    pvalues: 0.6306391897534834
+    same_distribution: true
+  BILL_AMT1:
+    pvalues: 0.45014906109042285
+    same_distribution: true
+  BILL_AMT2:
+    pvalues: 0.9457288690611966
+    same_distribution: true
+  BILL_AMT3:
+    pvalues: 0.8357659248022433
+    same_distribution: true
+  BILL_AMT4:
+    pvalues: 0.9919769537230998
+    same_distribution: true
+  BILL_AMT5:
+    pvalues: 0.9891068679675009
+    same_distribution: true
+  BILL_AMT6:
+    pvalues: 0.40980880601112635
+    same_distribution: true
+  EDUCATION:
+    pvalues: 0.9999969629390227
+    same_distribution: true
+  ID:
+    pvalues: 0.5716759300007694
+    same_distribution: true
+  LIMIT_BAL:
+    pvalues: 0.899568432310111
+    same_distribution: true
+  MARRIAGE:
+    pvalues: 0.9517351051740571
+    same_distribution: true
+  PAY_0:
+    pvalues: 0.9992665415739768
+    same_distribution: true
+  PAY_2:
+    pvalues: 0.9807332914385702
+    same_distribution: true
+  PAY_3:
+    pvalues: 0.99999995918418
+    same_distribution: true
+  PAY_4:
+    pvalues: 0.9999994103476464
+    same_distribution: true
+  PAY_5:
+    pvalues: 1.0
+    same_distribution: true
+  PAY_6:
+    pvalues: 0.9715835909951336
+    same_distribution: true
+  PAY_AMT1:
+    pvalues: 0.6179198229270806
+    same_distribution: true
+  PAY_AMT2:
+    pvalues: 0.6010178785478686
+    same_distribution: true
+  PAY_AMT3:
+    pvalues: 0.5427522441708532
+    same_distribution: true
+  PAY_AMT4:
+    pvalues: 0.8966460493343065
+    same_distribution: true
+  PAY_AMT5:
+    pvalues: 0.9922572373118965
+    same_distribution: true
+  PAY_AMT6:
+    pvalues: 0.6242758684950892
+    same_distribution: true
+  SEX:
+    pvalues: 0.8936826041724857
+    same_distribution: true
+  default_payment_next_month:
+    pvalues: 0.9980618956057665
+    same_distribution: true
