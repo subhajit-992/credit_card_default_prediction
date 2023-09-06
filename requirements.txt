@@ -8,5 +8,7 @@ imblearn
 xgboost
 PyYAML
 dill
+cassandra-driver
+apache-airflow
 #pylab
-#-e .
+-e .

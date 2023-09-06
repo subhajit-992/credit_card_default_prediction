@@ -80,6 +80,18 @@ class ModelPusherConfig:
             self.pusher_target_encoder_path = os.path.join(self.pusher_model_dir, TARGET_ENCODER_OBJECT_FILE_NAME)
         except Exception as e:
             raise CreditCardsException(e,sys)
+        
+class BatchPredictionConfig:
+    def __init__(self):
+        try:
+            self.inbox_dir = os.path.join("batch_data","inbox")
+            self.outbox_dir = os.path.join("batch_data","outbox")
+            self.archive_dir = os.path.join("batch_data","archive")
+            os.makedirs(self.outbox_dir,exist_ok=True)
+            os.makedirs(self.archive_dir,exist_ok=True)
+            os.makedirs(self.inbox_dir,exist_ok=True)
+        except Exception as e:
+            raise CreditCardsException(e,sys)
 
 
         

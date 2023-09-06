@@ -1,0 +1,1 @@
+docker run -p 8080:8080 -v %cd%\airflow\dags:/application/airflow/dags creditcard_fault_prediction:latest

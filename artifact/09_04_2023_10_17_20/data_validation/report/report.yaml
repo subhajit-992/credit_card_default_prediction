@@ -1,0 +1,78 @@
+test_missing_value: []
+train_missing_value: []
+train_test_drift:
+  age:
+    pvalues: 0.9807332914385721
+    same_distribution: true
+  bill_amt1:
+    pvalues: 0.45960745966886973
+    same_distribution: true
+  bill_amt2:
+    pvalues: 0.34540305902325374
+    same_distribution: true
+  bill_amt3:
+    pvalues: 0.5654384070169985
+    same_distribution: true
+  bill_amt4:
+    pvalues: 0.29519515631626203
+    same_distribution: true
+  bill_amt5:
+    pvalues: 0.8551166043615368
+    same_distribution: true
+  bill_amt6:
+    pvalues: 0.290898508509459
+    same_distribution: true
+  default_payment_next_month:
+    pvalues: 0.9999999897931172
+    same_distribution: true
+  education:
+    pvalues: 0.4846688174824637
+    same_distribution: true
+  id:
+    pvalues: 0.5633637336843602
+    same_distribution: true
+  limit_bal:
+    pvalues: 0.30983953677112597
+    same_distribution: true
+  marriage:
+    pvalues: 0.9898007096375844
+    same_distribution: true
+  pay_0:
+    pvalues: 0.9599555676957853
+    same_distribution: true
+  pay_2:
+    pvalues: 0.9999994921540692
+    same_distribution: true
+  pay_3:
+    pvalues: 0.9999996797399485
+    same_distribution: true
+  pay_4:
+    pvalues: 0.9999999998293813
+    same_distribution: true
+  pay_5:
+    pvalues: 0.9864089873343082
+    same_distribution: true
+  pay_6:
+    pvalues: 0.8951694283541013
+    same_distribution: true
+  pay_amt1:
+    pvalues: 0.5509661145483169
+    same_distribution: true
+  pay_amt2:
+    pvalues: 0.03684360097713557
+    same_distribution: false
+  pay_amt3:
+    pvalues: 0.005364070893527662
+    same_distribution: false
+  pay_amt4:
+    pvalues: 0.022709258202850233
+    same_distribution: false
+  pay_amt5:
+    pvalues: 0.05362526645540833
+    same_distribution: true
+  pay_amt6:
+    pvalues: 0.0741846651543292
+    same_distribution: true
+  sex:
+    pvalues: 0.9649140249744773
+    same_distribution: true

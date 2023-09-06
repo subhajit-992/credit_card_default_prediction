@@ -7,6 +7,7 @@ from creditcard.logger import logging
 from creditcard.entity.config_entity import DataIngestionConfig
 from creditcard.entity.artifact_entity import DataIngestionArtifact
 from sklearn.model_selection import train_test_split
+from cassandra_data.connect_database import import_data
 
 class DataIngestion:
     def __init__(self,data_ingestion_config:DataIngestionConfig):
@@ -18,8 +19,12 @@ class DataIngestion:
     
     def initiate_data_ingestion(self)->DataIngestionArtifact:
         try:
+            logging.info("import data set")
+            data_1 = import_data(zip_file="cassandra_data/secure-connect-credit-card-fault-prediction.zip",
+                             json_file="cassandra_data/Credit_Card_Fault_Prediction-token (1).json")
+            
             logging.info("read data set")
-            df = pd.read_csv("F:\\credit_card_fault_prediction\\Notebook\\UCI_Credit_Card.csv")
+            df = pd.read_csv(data_1)
 
             logging.info("Replacing na with NAN")
             df.replace({"na":np.NAN},inplace=True)
