@@ -18,7 +18,7 @@ class DataTransformation:
     def __init__(self,data_transformation_config:DataTransformationConfig,
                  data_validation_artifact:DataValidationArtifact):
         try:
-            logging.info(f"{'>>'*20} Data transformation {'<<'*20}")
+            logging.info(f"{'>>'*20} Data Transformation {'<<'*20}")
             self.data_transformation_config = data_transformation_config
             self.data_validation_artifact = data_validation_artifact
         except Exception as e:
