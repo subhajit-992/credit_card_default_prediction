@@ -75,8 +75,9 @@ class ModelEvalution:
             current_model_score = accuracy_score(y_true=y_true, y_pred=y_pred)
             #logging.info(f"Prediction using trained model: {current_target_encoder.inverse_transform(y_pred[:5])}")
 
-            diff = current_model_score-previous_model_score
-            if diff<self.model_eval_config.change_threshold:
+            #diff = current_model_score-previous_model_score
+            #if diff<self.model_eval_config.change_threshold:
+            if current_model_score<previous_model_score:
                 logging.info("Current trained model is not better than previous model")
                 raise Exception("Current trained model is not better than previous model")
 
