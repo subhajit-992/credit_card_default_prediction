@@ -27,7 +27,7 @@ class ModelEvalution:
     def initiate_model_evaluation(self)->ModelEvaluationArtifact:
         try:
             
-            logging.info("if saved model folder has model the we will compare "
+            logging.info("If saved model folder has model the we will compare "
             "which model is best trained or the model from saved model folder")
             latest_dir_path = self.model_resolver.get_latest_dir_path()
             if latest_dir_path==None:
