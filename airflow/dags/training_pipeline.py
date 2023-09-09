@@ -22,6 +22,8 @@ This DAG is demonstrating an Extract -> Transform -> Load pipeline
 from __future__ import annotations
 from creditcard.pipeline.training_pipeline import TrainingPipeline
 from creditcard.entity.config_entity import TrainingPipelineConfig
+from creditcard.utils import get_bucket_name_from_secrets
+from creditcard.logger import logging
 
 # [START tutorial]
 # [START import_module]
@@ -128,7 +130,9 @@ with DAG(
 
     def push_data_to_s3(**kwargs):
         import os
-        bucket_name = os.getenv("BUCKET_NAME")
+        #bucket_name = os.getenv("BUCKET_NAME")
+        bucket_name = get_bucket_name_from_secrets()
+        logging.info(f"bucket_name:{bucket_name}")
         artifact_folder = "/application/artifact"
         saved_model = "/application/saved_model"
         os.system(f"aws s3 sync {artifact_folder} s3://{bucket_name}/artifact")

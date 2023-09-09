@@ -10,5 +10,6 @@ PyYAML
 dill
 cassandra-driver
 apache-airflow
+boto3
 #pylab
 -e .

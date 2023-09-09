@@ -1,7 +1,7 @@
 import pandas as pd
 from .exception import CreditCardsException
 import os,sys
-#import json
+import json
 import yaml
 import dill
 import numpy as np
@@ -10,6 +10,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, recall_score
 from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
+import boto3
 
 
 def write_yaml_file(file_path,data:dict):
@@ -113,6 +114,25 @@ def load_object(file_path: str, ) -> object:
             return dill.load(file_obj)
     except Exception as e:
         raise CreditCardsException(e, sys) from e
+    
+def get_bucket_name_from_secrets():
+    try: # Initialize a Secrets Manager client
+        secrets_manager_client = boto3.client('secretsmanager', region_name='ap-south-1')
+
+        # Specify the name of your secret containing the bucket name
+        secret_name = 'arn:aws:s3:::subhajit-indrani-ml-1'
+
+        # Retrieve the secret value
+        response = secrets_manager_client.get_secret_value(SecretId=secret_name)
+
+        # Parse the secret JSON data to extract the bucket name
+        secret_data = response['SecretString']
+        secret_dict = json.loads(secret_data)
+        bucket_name = secret_dict.get('BUCKET_NAME')
+
+        return bucket_name 
+    except Exception as e:
+        raise CreditCardsException(e,sys)
 
         
 
