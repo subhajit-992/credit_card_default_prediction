@@ -49,7 +49,7 @@ class DataTransformation:
             input_feature_train_df=train_df.drop("default_payment_next_month",axis=1)
             input_feature_test_df=test_df.drop("default_payment_next_month",axis=1)
 
-            logging.info("selecting target feature for train and test dataframe")
+            logging.info("Selecting target feature for train and test dataframe")
             target_feature_train_df = train_df["default_payment_next_month"]
             target_feature_test_df = test_df["default_payment_next_month"]
 
