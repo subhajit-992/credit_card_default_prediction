@@ -21,7 +21,7 @@ class ModelPusher:
         
     def initiate_model_pusher(self)->ModelPusherArtifact:
         try:
-            logging.info("load object")
+            logging.info("Load object")
             transformer = load_object(file_path=self.data_transformation_artifact.transform_object_path)
             target_encoder = load_object(file_path=self.data_transformation_artifact.target_encoder_path)
             model = load_object(file_path=self.model_trainer_artifact.Model_path)
