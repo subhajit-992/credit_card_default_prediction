@@ -32,7 +32,7 @@ class ModelTrainer:
             train_arr = load_numpy_array_data(file_path=self.data_transformation_artifact.transform_train_path)
             test_arr = load_numpy_array_data(file_path=self.data_transformation_artifact.transform_test_path)
 
-            logging.info("split data into input and target feature")
+            logging.info("Split data into input and target feature")
             x_train,y_train = train_arr[:,:-1],train_arr[:,-1]
             x_test,y_test = test_arr[:,:-1],test_arr[:,-1]
 
