@@ -45,7 +45,7 @@ class DataTransformation:
             train_df = pd.read_csv( self.data_validation_artifact.train_file_path)
             test_df = pd.read_csv( self.data_validation_artifact.test_file_path)
 
-            logging.info(f"selecting input feature for train and test dataframe")
+            logging.info(f"Selecting input feature for train and test dataframe")
             input_feature_train_df=train_df.drop("default_payment_next_month",axis=1)
             input_feature_test_df=test_df.drop("default_payment_next_month",axis=1)
 
