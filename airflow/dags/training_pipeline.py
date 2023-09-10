@@ -135,8 +135,8 @@ with DAG(
         logging.info(f"bucket_name:{bucket_name}")
         artifact_folder = "/application/artifact"
         saved_model = "/application/saved_model"
-        os.system(f"aws s3 sync {artifact_folder} s3://{bucket_name}/artifact")
-        os.system(f"aws s3 sync {saved_model} s3://{bucket_name}/saved_model")
+        os.system(f"aws s3 sync {artifact_folder} s3://{bucket_name}/artifact/")
+        os.system(f"aws s3 sync {saved_model} s3://{bucket_name}/saved_model/")
 
 
 
