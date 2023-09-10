@@ -24,7 +24,7 @@ with DAG(
     def download_files(**kwargs):
         bucket_name = os.getenv("BUCKET_NAME")
         #bucket_name = get_bucket_name_from_secrets()
-        os.system(f"aws s3 sync s3://{bucket_name}/inbox/ {config.inbox_dir}")
+        os.system(f"aws s3 sync s3://{bucket_name}/inbox {config.inbox_dir}")
 
     def batch_prediction(**kwargs):
         config = BatchPredictionConfig()
@@ -34,8 +34,8 @@ with DAG(
     def upload_files(**kwargs):
         bucket_name = os.getenv("BUCKET_NAME")
         #bucket_name = get_bucket_name_from_secrets()
-        os.system(f"aws s3 sync {config.archive_dir} s3://{bucket_name}/archive/")
-        os.system(f"aws s3 sync {config.outbox_dir} s3://{bucket_name}/outbox/")
+        os.system(f"aws s3 sync {config.archive_dir} s3://{bucket_name}/archive")
+        os.system(f"aws s3 sync {config.outbox_dir} s3://{bucket_name}/outbox")
 
     download_input_files  = PythonOperator(
             task_id="download_file",
