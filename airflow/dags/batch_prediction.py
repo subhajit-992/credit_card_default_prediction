@@ -9,6 +9,9 @@ from airflow.operators.python import PythonOperator
 from creditcard.entity.config_entity import BatchPredictionConfig
 from creditcard.pipeline.batch_prediction import CreditCardBatchPrediction
 from creditcard.utils import get_bucket_name_from_secrets
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
 
 config = BatchPredictionConfig()
 with DAG(
