@@ -26,7 +26,7 @@ class DataValidation:
         try:
             threshold = self.data_validation_config.missing_thresold
             null_report = (df.isna().sum()*100)/df.shape[0]
-            logging.info(f"selecting column name which contains null above to {threshold}")
+            logging.info(f"Selecting column name which contains null above to {threshold}")
             drop_column_names = null_report[null_report>threshold].index
             logging.info(f"Columns to drop: {list(drop_column_names)}")
             self.validation_error[report_key_name]=list(drop_column_names)
