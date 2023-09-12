@@ -79,7 +79,7 @@ class DataValidation:
             
             
             if test_df is None:
-                logging.info(f"No column left in test df hence stopping this pipeline")
+                logging.info(f"No column Left in test df hence stopping this pipeline")
                 raise Exception("No column left in test df hence stopping this pipeline")
             
             if (len(train_df.columns) != len(test_df.columns)):
