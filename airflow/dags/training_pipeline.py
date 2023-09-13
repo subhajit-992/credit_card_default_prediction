@@ -138,12 +138,13 @@ with DAG(
         bucket_name = os.getenv("BUCKET_NAME")
         #bucket_name = get_bucket_name_from_secrets()
         logging.info(f"bucket_name:{bucket_name}")
-        artifact_folder = "/application/artifact"
-        saved_model = "/application/saved_model"
+        artifact_folder = "/application/artifact/"
+        saved_model = "/application/saved_model/"
         #os.system(f"aws s3 sync {artifact_folder} s3://{bucket_name}/artifact/")
         os.system(f"aws s3 sync /application/artifact s3://{bucket_name}/artifact/")
         #os.system(f"aws s3 sync {saved_model} s3://{bucket_name}/saved_model/")
         os.system(f"aws s3 sync /application/saved_model s3://{bucket_name}/saved_model/")
+        logging.info("Done with upload a file in S3 bucket")
 
 
 
