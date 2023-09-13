@@ -78,7 +78,7 @@ class ModelEvalution:
             #diff = current_model_score-previous_model_score
             #if diff<self.model_eval_config.change_threshold:
             if current_model_score<previous_model_score:
-                logging.info("Current trained model is not better than previous model")
+                logging.info("Current Trained model is not better than previous model")
                 raise Exception("Current trained model is not better than previous model")
 
             model_evalution_artifact = ModelEvaluationArtifact(is_model_accepted=True,
