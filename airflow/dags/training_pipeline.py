@@ -144,8 +144,6 @@ with DAG(
         # os.system(f"aws s3 sync /application/artifact s3://{bucket_name}/artifact/")
         os.system(f"aws s3 sync {saved_model} s3://{bucket_name}/saved_model/")
         # os.system(f"aws s3 sync /application/saved_model s3://{bucket_name}/saved_model/")
-
-        upload_file()
         logging.info("Done with upload a file in S3 bucket")
 
 
