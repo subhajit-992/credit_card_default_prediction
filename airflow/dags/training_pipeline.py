@@ -66,6 +66,11 @@ with DAG(
     dag.doc_md = __doc__
     # [END documentation]
 
+    # Add this code to print the current directory
+    def get_dir():
+        current_directory = os.getcwd()
+        logging.info(f"Current Directory: {current_directory}")
+
 
     def data_ingestion(**kwargs):
         ti = kwargs["ti"]
@@ -138,8 +143,8 @@ with DAG(
         bucket_name = os.getenv("BUCKET_NAME")
         #bucket_name = get_bucket_name_from_secrets()
         logging.info(f"bucket_name:{bucket_name}")
-        artifact_folder = "/home/ubuntu/_work/credit_card_default_prediction/credit_card_default_prediction/artifact"
-        saved_model = "/home/ubuntu/_work/credit_card_default_prediction/credit_card_default_prediction/saved_model"
+        artifact_folder = "/application/artifact"
+        saved_model = "/application/saved_model"
         os.system(f"aws s3 sync {artifact_folder} s3://{bucket_name}/artifact/")
         # os.system(f"aws s3 sync /application/artifact s3://{bucket_name}/artifact/")
         os.system(f"aws s3 sync {saved_model} s3://{bucket_name}/saved_model/")
@@ -151,11 +156,16 @@ with DAG(
 
     
 
-    
 
 
 
     # [START main_flow]
+
+    get_dir_task = PythonOperator(
+        task_id="get_dir",
+        python_callable=get_dir,
+    )
+
     data_ingestion_task = PythonOperator(
         task_id="data_ingestion",
         python_callable=data_ingestion,
@@ -225,7 +235,7 @@ with DAG(
     """
     )
 
-    data_ingestion_task >> data_validation_task  >> data_transformation_task >> model_trainer_task >> model_evaluation_task >> model_pusher_task >> push_data_to_s3_task
+    get_dir_task >> data_ingestion_task >> data_validation_task  >> data_transformation_task >> model_trainer_task >> model_evaluation_task >> model_pusher_task >> push_data_to_s3_task
 
 # [END main_flow]
 
