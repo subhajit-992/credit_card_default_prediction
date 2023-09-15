@@ -11,6 +11,16 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, recall_score
 from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 import boto3
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
+aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
+logging.info(f"aws_access_key_id:{aws_access_key_id}")
+aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+logging.info(f"aws_secret_access_key:{aws_secret_access_key}")
+
+# Create a Boto3 S3 client
+s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
 
 
 def write_yaml_file(file_path,data:dict):
@@ -131,6 +141,41 @@ def get_bucket_name_from_secrets():
         bucket_name = secret_dict.get('BUCKET_NAME')
 
         return bucket_name 
+    except Exception as e:
+        raise CreditCardsException(e,sys)
+    
+def create_folder_s3(bucket_name,folder_name):
+    try:
+        s3.put_object(Bucket=bucket_name, Key=folder_name)
+    except Exception as e:
+        raise CreditCardsException(e,sys)
+    
+def upload_in_s3(local_folder_path, bucket_name, s3_folder_prefix):
+    try:
+        for root, dirs, files in os.walk(local_folder_path):
+            for file_name in files:
+                local_file_path = os.path.join(root, file_name)
+                # Calculate the S3 object key based on the local file's path and the desired prefix
+                relative_file_path = os.path.relpath(local_file_path, local_folder_path)
+                s3_object_key = os.path.join(s3_folder_prefix, relative_file_path)
+                s3.upload_file(local_file_path, bucket_name, s3_object_key)
+                logging.info(f"Uploaded '{local_file_path}' to '{bucket_name}/{s3_object_key}'")
+    except Exception as e:
+        raise CreditCardsException(e,sys)
+    
+def download_from_s3(bucket_name, folder_name, local_file_path):
+    try:
+        response = s3.list_objects(Bucket=bucket_name, Prefix=folder_name)
+        objects = response.get('Contents', [])
+
+        if objects:
+            # Download the first file (you can modify this to choose a specific file)
+            object_key = objects[0]['Key']
+
+            # Download the file to the specified local file path
+            s3.download_file(bucket_name, object_key, local_file_path)
+            logging.info(f"File '{object_key}' downloaded to '{local_file_path}'")
+        
     except Exception as e:
         raise CreditCardsException(e,sys)
     
