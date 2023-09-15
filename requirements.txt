@@ -12,5 +12,6 @@ cassandra-driver
 apache-airflow
 boto3
 python-dotenv
+dnspython
 #pylab
 -e .
