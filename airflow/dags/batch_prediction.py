@@ -25,7 +25,8 @@ with DAG(
     tags=['Prediction'],
 )as dag:
     def download_files(**kwargs):
-        bucket_name = os.getenv("BUCKET_NAME")
+        #bucket_name = os.getenv("BUCKET_NAME")
+        bucket_name = "creditcard-12"
         #bucket_name = get_bucket_name_from_secrets()
         #os.system(f"aws s3 sync s3://{bucket_name}/inbox/ {config.inbox_dir}")
         download_from_s3(bucket_name=bucket_name,folder_name="inbox",local_file_path=config.inbox_dir)
@@ -36,12 +37,13 @@ with DAG(
         creditcard_batch_prediction.start_prediction()
 
     def upload_files(**kwargs):
-        bucket_name = os.getenv("BUCKET_NAME")
+        #bucket_name = os.getenv("BUCKET_NAME")
+        bucket_name = "creditcard-12"
         #bucket_name = get_bucket_name_from_secrets()
         #os.system(f"aws s3 sync {config.archive_dir} s3://{bucket_name}/archive/")
         #os.system(f"aws s3 sync {config.outbox_dir} s3://{bucket_name}/outbox/")
-        create_folder_s3(bucket_name=bucket_name,folder_name="archive")
-        create_folder_s3(bucket_name=bucket_name,folder_name="outbox")
+        #create_folder_s3(bucket_name=bucket_name,folder_name="archive")
+        #create_folder_s3(bucket_name=bucket_name,folder_name="outbox")
         upload_in_s3(local_folder_path=config.archive_dir,bucket_name=bucket_name,s3_folder_prefix="archive")
         upload_in_s3(local_folder_path=config.outbox_dir,bucket_name=bucket_name,s3_folder_prefix="outbox")
 
