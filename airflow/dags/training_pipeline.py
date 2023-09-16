@@ -140,7 +140,8 @@ with DAG(
 
     def push_data_to_s3(**kwargs):
         #import os
-        bucket_name = os.getenv("BUCKET_NAME")
+        #bucket_name = os.getenv("BUCKET_NAME")
+        bucket_name = os.environ.get("BUCKET_NAME")
         #bucket_name = get_bucket_name_from_secrets()
         logging.info(f"bucket_name:{bucket_name}")
         artifact_folder = "/application/artifact"
