@@ -18,11 +18,12 @@ aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
 logging.info(f"aws_access_key_id:{aws_access_key_id}")
 aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
 logging.info(f"aws_secret_access_key:{aws_secret_access_key}")
+aws_region = 'ap-south-1'
 #aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
 #aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 # Create a Boto3 S3 client
-s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
+s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key,region_name=aws_region)
 
 
 def write_yaml_file(file_path,data:dict):
