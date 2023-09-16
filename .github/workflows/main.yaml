@@ -37,24 +37,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y jq unzip
-      - #name: Configure AWS credentials
-        #uses: aws-actions/configure-aws-credentials@v1
-        #with:
-          #aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          #aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          #aws-region: ${{ secrets.AWS_REGION }}
-
-        name: setting env
-        env:
-          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-        run: echo "Environment variable BUCKET_NAME is set to $BUCKET_NAME"
-
-        name: Set up AWS CLI
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}  # Replace with your desired AWS region
-        run: echo "AWS credentials are set as environment variables"
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Login to Amazon ECR
         id: login-ecr
