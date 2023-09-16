@@ -14,13 +14,13 @@ import boto3
 from dotenv import load_dotenv
 # Load environment variables from .env file
 load_dotenv()
-#aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
-#logging.info(f"aws_access_key_id:{aws_access_key_id}")
-#aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
-#logging.info(f"aws_secret_access_key:{aws_secret_access_key}")
+aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
+logging.info(f"aws_access_key_id:{aws_access_key_id}")
+aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+logging.info(f"aws_secret_access_key:{aws_secret_access_key}")
 
 # Create a Boto3 S3 client
-s3 = boto3.client('s3', aws_access_key_id="AKIATBVXFEPSD4SSD4FZ", aws_secret_access_key="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")
+s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)
 
 
 def write_yaml_file(file_path,data:dict):
@@ -171,6 +171,7 @@ def download_from_s3(bucket_name, folder_name, local_file_path):
         if objects:
             # Download the first file (you can modify this to choose a specific file)
             object_key = objects[0]['Key']
+            local_file_path = os.path.join(local_file_path,"downloaded_file.csv")
 
             # Download the file to the specified local file path
             s3.download_file(bucket_name, object_key, local_file_path)
