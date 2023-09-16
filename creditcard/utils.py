@@ -11,15 +11,15 @@ from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, recall_score
 from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 import boto3
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 # Load environment variables from .env file
-load_dotenv()
-#aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
-#logging.info(f"aws_access_key_id:{aws_access_key_id}")
-#aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
-#logging.info(f"aws_secret_access_key:{aws_secret_access_key}")
-aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
-aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
+#load_dotenv()
+aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
+logging.info(f"aws_access_key_id:{aws_access_key_id}")
+aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+logging.info(f"aws_secret_access_key:{aws_secret_access_key}")
+#aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
+#aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 # Create a Boto3 S3 client
 s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key)

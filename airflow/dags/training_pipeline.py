@@ -39,9 +39,9 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 
 import os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 # Load environment variables from .env file
-load_dotenv()
+#load_dotenv()
 
 training_pipeline = TrainingPipeline(training_pipeline_config=TrainingPipelineConfig())
 
@@ -140,8 +140,8 @@ with DAG(
 
     def push_data_to_s3(**kwargs):
         #import os
-        #bucket_name = os.getenv("BUCKET_NAME")
-        bucket_name = os.environ.get("BUCKET_NAME")
+        bucket_name = os.getenv("BUCKET_NAME")
+        #bucket_name = os.environ.get("BUCKET_NAME")
         #bucket_name = get_bucket_name_from_secrets()
         logging.info(f"bucket_name:{bucket_name}")
         artifact_folder = "/application/artifact"
