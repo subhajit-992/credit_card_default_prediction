@@ -174,7 +174,8 @@ def download_from_s3(bucket_name, folder_name, local_file_path):
         if objects:
             # Download the first file (you can modify this to choose a specific file)
             object_key = objects[0]['Key']
-            local_file_path = os.path.join(local_file_path,"downloaded_file.csv")
+            file_name = os.path.basename(object_key)
+            local_file_path = os.path.join(local_file_path,file_name)
 
             # Download the file to the specified local file path
             s3.download_file(bucket_name, object_key, local_file_path)
