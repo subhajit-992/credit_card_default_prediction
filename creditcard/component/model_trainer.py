@@ -36,7 +36,7 @@ class ModelTrainer:
             x_train,y_train = train_arr[:,:-1],train_arr[:,-1]
             x_test,y_test = test_arr[:,:-1],test_arr[:,-1]
 
-            logging.info("start model building")
+            logging.info("Start model building")
             models = {
                 "Logistic_Regressor": LogisticRegression(),
                 #"KNeighbors_Classifier": KNeighborsClassifier(),
