@@ -14,9 +14,9 @@ import boto3
 #from dotenv import load_dotenv
 # Load environment variables from .env file
 #load_dotenv()
-aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID")
+aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID").strip("\n")
 logging.info(f"aws_access_key_id:{aws_access_key_id}")
-aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY")
+aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY").strip("\n")
 logging.info(f"aws_secret_access_key:{aws_secret_access_key}")
 aws_region = "ap-south-1"
 #aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
