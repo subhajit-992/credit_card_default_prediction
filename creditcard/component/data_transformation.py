@@ -41,7 +41,7 @@ class DataTransformation:
     
     def initiate_data_transformation(self)->DataTransformationArtifact:
         try:
-            logging.info(f"reading training and testing file")
+            logging.info(f"Reading training and testing file")
             train_df = pd.read_csv( self.data_validation_artifact.train_file_path)
             test_df = pd.read_csv( self.data_validation_artifact.test_file_path)
 
