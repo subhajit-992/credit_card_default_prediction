@@ -46,8 +46,11 @@ class CreditCardBatchPrediction:
                 input_arr = transformer.transform(df[input_feature_names])
 
                 prediction = model.predict(input_arr)
+                prediction_probability = model.predict_proba(input_arr)
                 #cat_prediction = target_encoder.inverse_transform(prediction)
                 df["prediction"]=prediction
+                submission = pd.DataFrame(prediction_probability,columns=["probability_of_not_default","probability _of_default"])
+                df = pd.concat([df,submission],axis=1)
                 #df["cat_pred"]=cat_prediction
 
                 file_name = os.path.basename(file_path)
